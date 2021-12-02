@@ -58,13 +58,7 @@ explore: events {}
 
 explore: locations {}
 
-explore: financial_status {
-  join: people {
-    type:  left_outer
-    sql_on: ${financial_status.id} = ${people.id};;
-    relationship: one_to_one
-  }
-}
+explore: financial_status {}
 
 explore: physical_characteristics {}
 
@@ -113,6 +107,12 @@ explore: people {
   join: companies {
     type: left_outer
     sql_on: ${people.id} = ${companies.id} ;;
+    relationship: one_to_one
+  }
+
+  join: financial_status {
+    type:  left_outer
+    sql_on: ${people.id} = ${financial_status.id} ;;
     relationship: one_to_one
   }
 }
