@@ -17,6 +17,12 @@ explore: aib_bnbs_nyc {
     relationship: one_to_many
   }
 
+  join: people{
+    type: left_outer
+    sql_on: ${bnbreservations.person_id} = ${people.id} ;;
+    relationship: one_to_one
+  }
+
   join: bnbcheckins {
     type:  left_outer
     sql_on: ${aib_bnbs_nyc.id} = ${bnbcheckins.bnb_id1} ;;
