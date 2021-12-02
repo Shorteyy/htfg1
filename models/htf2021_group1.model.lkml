@@ -130,6 +130,7 @@ explore: people {
     type: left_outer
     sql_on: ${people.id} = ${ride_info.ride_id} ;;
     relationship: many_to_many
+  }
 
   join: financial_status {
     type:  left_outer
