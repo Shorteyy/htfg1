@@ -34,7 +34,13 @@ explore: bnbreservations {
   }
 }
 
-explore: companies {}
+explore: companies {
+  join: company_employees {
+    type:  left_outer
+    sql_on: ${companies.id} = ${company_employees.id} ;;
+    relationship: one_to_one
+  }
+}
 
 explore: event_reviews {
   join: events {
