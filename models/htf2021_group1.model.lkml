@@ -98,6 +98,11 @@ explore: people {
     sql_on: ${people.id} = ${appearance.id} ;;
     relationship: one_to_one
   }
+  join: roles{
+    type: left_outer
+    sql_on: ${people.id} = ${roles.job_id} ;;
+    relationship: one_to_one
+  }
 }
 
 explore: gender {}
