@@ -62,7 +62,37 @@ explore: financial_status {
 
 explore: physical_characteristics {}
 
-explore: people {}
+explore: people {
+  join: ages {
+    type:  left_outer
+    sql_on: ${people.id} =${ages.id} ;;
+    relationship: one_to_one
+  }
+
+  join: gender{
+    type:  left_outer
+    sql_on: ${people.id} = ${gender.id} ;;
+    relationship: one_to_one
+  }
+
+  join: religions {
+    type:  left_outer
+    sql_on: ${people.id} = ${religions.id} ;;
+    relationship: one_to_one
+  }
+
+  join: nationalities {
+    type:  left_outer
+    sql_on: ${people.id} = ${nationalities.id} ;;
+    relationship: one_to_one
+  }
+
+  join: appearance {
+    type:  left_outer
+    sql_on: ${people.id} = ${appearance.id} ;;
+    relationship: one_to_one
+  }
+}
 
 explore: gender {}
 
