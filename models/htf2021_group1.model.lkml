@@ -8,6 +8,8 @@ datagroup: htf2021_group1_default_datagroup {
   max_cache_age: "1 hour"
 }
 
+# dit is een comment
+
 persist_with: htf2021_group1_default_datagroup
 
 explore: aib_bnbs_nyc {}
