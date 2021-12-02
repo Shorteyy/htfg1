@@ -8,11 +8,21 @@ datagroup: htf2021_group1_default_datagroup {
   max_cache_age: "1 hour"
 }
 
-# dit is een comment
-
 persist_with: htf2021_group1_default_datagroup
 
-explore: aib_bnbs_nyc {}
+explore: aib_bnbs_nyc {
+  join: bnbreservations {
+    type:  left_outer
+    sql_on: ${aib_bnbs_nyc.id} = ${bnbreservations.bnbid} ;;
+    relationship: one_to_many
+  }
+
+  join: bnbcheckins {
+    type:  left_outer
+    sql_on: ${aib_bnbs_nyc.id} = ${bnbcheckins.bnb_id1} ;;
+    relationship: one_to_many
+  }
+}
 
 explore: ages {}
 
@@ -54,17 +64,17 @@ explore: appearance {}
 
 explore: nationalities {}
 
-explore: events {}
+explore: events {
+  join: locations {
+    type:  left_outer
+    sql_on: ${events.id} = ${locations.id} ;;
+    relationship: many_to_one
+  }
+}
 
 explore: locations {}
 
-explore: financial_status {
-  join: people {
-    type:  left_outer
-    sql_on: ${financial_status.id} = ${people.id};;
-    relationship: one_to_one
-  }
-}
+explore: financial_status {}
 
 explore: physical_characteristics {}
 
@@ -115,10 +125,16 @@ explore: people {
     sql_on: ${people.id} = ${companies.id} ;;
     relationship: one_to_one
   }
+
   join: ride_info {
     type: left_outer
     sql_on: ${people.id} = ${ride_info.ride_id} ;;
     relationship: many_to_many
+
+  join: financial_status {
+    type:  left_outer
+    sql_on: ${people.id} = ${financial_status.id} ;;
+    relationship: one_to_one
   }
 }
 
