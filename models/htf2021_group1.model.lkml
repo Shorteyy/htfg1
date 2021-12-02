@@ -50,13 +50,19 @@ explore: gender {}
 
 explore: religions {}
 
-explore: ride_info {}
-
 explore: taxi_rides {
   join: taxis {
     type: left_outer
     sql_on: ${taxi_rides.taxi_id} = ${taxis.id} ;;
     relationship: many_to_one
+  }
+}
+
+explore: ride_info {
+  join: taxi_rides {
+    type: left_outer
+    sql_on: ${taxi_rides.taxi_id} = ${ride_info.ride_id} ;;
+    relationship: one_to_many
   }
 }
 
