@@ -19,6 +19,11 @@ view: people {
     sql: ${TABLE}.LastName ;;
   }
 
+  dimension: name {
+    type:  string
+    sql:  ${first_name} || " " || ${last_name} ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [id, first_name, last_name]
