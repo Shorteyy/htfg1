@@ -115,6 +115,11 @@ explore: people {
     sql_on: ${people.id} = ${companies.id} ;;
     relationship: one_to_one
   }
+  join: ride_info {
+    type: left_outer
+    sql_on: ${people.id} = ${ride_info.ride_id} ;;
+    relationship: many_to_many
+  }
 }
 
 explore: gender {}
@@ -141,6 +146,21 @@ explore: taxis {
     sql_on: ${taxis.id} = ${taxi_rides.taxi_id} ;;
     relationship: one_to_many
   }
+  join: ride_info {
+    type: left_outer
+    sql_on: ${taxi_rides.id} = ${ride_info.ride_id} ;;
+    relationship: one_to_one
+  }
+  join: locations {
+    type: left_outer
+    sql_on: ${ride_info.dropoff_location} = ${locations.id} ;;
+    relationship: one_to_one
+  }
+  join: events {
+    type: left_outer
+    sql_on: ${locations.id} = ${events.id} ;;
+    relationship: one_to_one
+  }
 }
 
 explore: ride_passengers {
@@ -148,5 +168,20 @@ explore: ride_passengers {
     type:  left_outer
     sql_on:  ${ride_passengers.passenger_id} = ${people.id} ;;
     relationship: many_to_one
+  }
+  join: ride_info {
+    type: left_outer
+    sql_on: ${ride_passengers.ride_id} = ${ride_info.ride_id} ;;
+    relationship: one_to_one
+  }
+  join: locations {
+    type: left_outer
+    sql_on: ${ride_info.dropoff_location} = ${locations.id} ;;
+    relationship: one_to_one
+  }
+  join: events {
+    type: left_outer
+    sql_on: ${locations.id} = ${events.id} ;;
+    relationship: one_to_one
   }
 }
