@@ -8,11 +8,21 @@ datagroup: htf2021_group1_default_datagroup {
   max_cache_age: "1 hour"
 }
 
-# dit is een comment
-
 persist_with: htf2021_group1_default_datagroup
 
-explore: aib_bnbs_nyc {}
+explore: aib_bnbs_nyc {
+  join: bnbreservations {
+    type:  left_outer
+    sql_on: ${aib_bnbs_nyc.id} = ${bnbreservations.bnbid} ;;
+    relationship: one_to_many
+  }
+
+  join: bnbcheckins {
+    type:  left_outer
+    sql_on: ${aib_bnbs_nyc.id} = ${bnbcheckins.bnb_id1} ;;
+    relationship: one_to_many
+  }
+}
 
 explore: ages {}
 
@@ -54,7 +64,13 @@ explore: appearance {}
 
 explore: nationalities {}
 
-explore: events {}
+explore: events {
+  join: locations {
+    type:  left_outer
+    sql_on: ${events.id} = ${locations.id} ;;
+    relationship: many_to_one
+  }
+}
 
 explore: locations {}
 
