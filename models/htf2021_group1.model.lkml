@@ -98,6 +98,13 @@ explore: people {
     sql_on: ${people.id} = ${appearance.id} ;;
     relationship: one_to_one
   }
+
+  join: physical_characteristics {
+    type:  left_outer
+    sql_on: ${people.id} = ${physical_characteristics.id} ;;
+    relationship: one_to_one
+  }
+
   join: roles{
     type: left_outer
     sql_on: ${people.id} = ${roles.job_id} ;;
@@ -109,13 +116,7 @@ explore: gender {}
 
 explore: religions {}
 
-explore: taxi_rides {
-  join: taxis {
-    type: left_outer
-    sql_on: ${taxi_rides.taxi_id} = ${taxis.id} ;;
-    relationship: many_to_one
-  }
-}
+explore: taxi_rides {}
 
 explore: ride_info {
   join: taxi_rides {
@@ -129,7 +130,13 @@ explore: sub_departments {}
 
 explore: roles {}
 
-explore: taxis {}
+explore: taxis {
+  join: taxi_rides {
+    type: left_outer
+    sql_on: ${taxis.id} = ${taxi_rides.taxi_id} ;;
+    relationship: one_to_many
+  }
+}
 
 explore: ride_passengers {
   join: people {
