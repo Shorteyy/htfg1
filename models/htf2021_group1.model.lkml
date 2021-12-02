@@ -97,6 +97,11 @@ explore: people {
     sql_on: ${people.id} = ${roles.job_id} ;;
     relationship: one_to_one
   }
+  join: companies {
+    type: left_outer
+    sql_on: ${people.id} = ${companies.id} ;;
+    relationship: one_to_one
+  }
 }
 
 explore: gender {}
