@@ -16,11 +16,23 @@ explore: aib_bnbs_nyc {}
 
 explore: ages {}
 
-explore: bnbcheckins {}
+explore: bnbcheckins {
+  join: people {
+    type:  left_outer
+    sql_on:  ${bnbcheckins.person_id2} = ${people.id};;
+    relationship: one_to_one
+  }
+}
 
 explore: company_employees {}
 
-explore: bnbreservations {}
+explore: bnbreservations {
+  join: people {
+    type:  left_outer
+    sql_on: ${bnbreservations.person_id} = ${people.id} ;;
+    relationship: one_to_one
+  }
+}
 
 explore: companies {}
 
@@ -40,7 +52,13 @@ explore: events {}
 
 explore: locations {}
 
-explore: financial_status {}
+explore: financial_status {
+  join: people {
+    type:  left_outer
+    sql_on: ${financial_status.id} = ${people.id};;
+    relationship: one_to_one
+  }
+}
 
 explore: physical_characteristics {}
 
