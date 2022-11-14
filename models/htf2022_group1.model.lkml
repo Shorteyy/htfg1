@@ -1,7 +1,7 @@
 connection: "htf2022bq"
 
-# include all the views
 include: "/views/**/*.view"
+include: "/explores/**/*.*"
 
 datagroup: htf2022_group1_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
@@ -9,15 +9,3 @@ datagroup: htf2022_group1_default_datagroup {
 }
 
 persist_with: htf2022_group1_default_datagroup
-
-explore: countries {}
-
-explore: energy_sources {}
-
-explore: generated_waste {}
-
-explore: co2_emissions {}
-
-explore: forest_coverage_mha {}
-
-explore: magic_potions {}
