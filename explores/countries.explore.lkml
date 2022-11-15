@@ -11,5 +11,14 @@ explore: countries {
     relationship: one_to_many
     type: inner
   }
-
+  join: forest_coverage_mha {
+    sql_on: ${countries.id} = ${forest_coverage_mha.country_id} ;;
+    relationship: one_to_many
+    type: inner
+  }
+  join: generated_waste {
+    sql_on: ${countries.id} = ${generated_waste.country_id} ;;
+    relationship: one_to_many
+    type: inner
+  }
 }
