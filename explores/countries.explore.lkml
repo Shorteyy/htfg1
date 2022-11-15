@@ -26,4 +26,17 @@ explore: countries {
     relationship: one_to_many
     type: cross
   }
+  join: energy_after_potion {
+    sql_on: ${countries.name} = ${energy_after_potion.countries_name};;
+    relationship: one_to_many
+    type: inner
+  }
+  join: forest_after_potion {
+    sql_on: ${countries.id} = ${forest_after_potion.countries_id};;
+    relationship: one_to_many
+    type: inner
+  }
+
+
+
 }
