@@ -16,4 +16,9 @@ view: generated_waste {
     type: count
     drill_fields: []
   }
+
+  measure: waste {
+    type:  sum
+    sql: ${TABLE}.kg_per_citizen ;;
+  }
 }
