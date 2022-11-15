@@ -29,4 +29,32 @@ view: co2_emissions {
     filters: [countries.name: "France"]
   }
 
+  measure: emissionPerYearFinland {
+    type: sum
+    drill_fields: []
+    sql: ${TABLE}.metricton_per_citizen ;;
+    filters: [countries.name: "Finland"]
+  }
+
+  measure: emissionPerYearRussia {
+    type: sum
+    drill_fields: []
+    sql: ${TABLE}.metricton_per_citizen ;;
+    filters: [countries.name: "Russia"]
+  }
+
+  measure: emissionPerYearUS {
+    type: sum
+    drill_fields: []
+    sql: ${TABLE}.metricton_per_citizen ;;
+    filters: [countries.name: "United States"]
+  }
+
+  measure: emissionPerYearCanada {
+    type: sum
+    drill_fields: []
+    sql: ${TABLE}.metricton_per_citizen ;;
+    filters: [countries.name: "Canada"]
+  }
+
 }
