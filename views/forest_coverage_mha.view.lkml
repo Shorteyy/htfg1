@@ -31,4 +31,14 @@ view: forest_coverage_mha {
     type: count
     drill_fields: []
   }
+
+  measure: gain_ {
+    type: sum
+    sql: ${TABLE}.gain ;;
+  }
+
+  measure: loss_ {
+    type: sum
+    sql: ${TABLE}.loss ;;
+  }
 }
