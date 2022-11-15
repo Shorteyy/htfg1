@@ -57,4 +57,10 @@ view: co2_emissions {
     filters: [countries.name: "Canada"]
   }
 
+  measure: United_States_After_Potion {
+    type: sum
+    sql: ${TABLE}.metricton_per_citizen * 2/3 ;;
+    filters: [countries.name: "United States"]
+  }
+
 }

@@ -21,4 +21,10 @@ view: generated_waste {
     type:  sum
     sql: ${TABLE}.kg_per_citizen ;;
   }
+
+  measure: United_States_After_Potion{
+    type: sum
+    sql: ${TABLE}.kg_per_citizen -350 ;;
+    filters: [countries.name: "United States"]
+  }
 }
