@@ -21,4 +21,9 @@ explore: countries {
     relationship: one_to_many
     type: inner
   }
+  join: magic_potions {
+    sql_on: ${countries.name} = ${magic_potions.name} ;;
+    relationship: one_to_many
+    type: inner
+  }
 }
