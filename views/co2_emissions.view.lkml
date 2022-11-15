@@ -15,6 +15,7 @@ view: co2_emissions {
   dimension: year {
     type: number
     sql: ${TABLE}.year ;;
+    value_format: "0"
   }
 
   measure: count {
