@@ -21,4 +21,12 @@ view: co2_emissions {
     type: count
     drill_fields: []
   }
+
+  measure: emissionPerYearFrance {
+    type: sum
+    drill_fields: []
+    sql: ${TABLE}.metricton_per_citizen ;;
+    filters: [countries.name: "France"]
+  }
+
 }
